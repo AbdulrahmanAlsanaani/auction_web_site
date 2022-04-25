@@ -23,7 +23,7 @@
     <div class="col-md-4">
         <div class="card rounded">
             <div class="card-image">
-                <span class="card-notify-badge">Low KMS</span>
+                <span class="card-notify-badge">مزاد جاري</span>
                 <span class="card-notify-year">New</span>
                 <img class="img-fluid" src="assets/images/mobile_listing_main_01.jpg" alt="Alternate Text" />
             </div>
@@ -36,7 +36,7 @@
                 <div class="ad-title m-auto">
                     <h5>  نيسان Kicks SV+NAV عائلة</h5>
 					<h2>العطاء الحالي 4,000,000</h2>
-          <h2 id="demo"> ينتهي المزاد بعد</h2>
+          <h2 id="demo"> متبقي على إنتهاء المزاد</h2>
           
                 </div>
                 <a class="ad-btn" href="{{ url('/appear_detalis_2')}}">مشاهدة التفاصيل</a>
@@ -46,7 +46,7 @@
     <div class="col-md-4">
         <div class="card rounded">
             <div class="card-image">
-                <span class="card-notify-badge">Fully-Loaded</span>
+                <span class="card-notify-badge">مزاد جاري</span>
                
                 <img class="img-fluid" src="assets/images/e-class-coupe-brilliant-blue-metallic.jpg" alt="Alternate Text" />
             </div>
@@ -59,7 +59,7 @@
                 <div class="ad-title m-auto">
                     <h5>  مرسيدس بنز  Coupe عائلة</h5>
 					<h2>العطاء الحالي8,000,000 </h2>
-          <h2> ينتهي المزاد بعد</h2>
+          <h2>  متبقي على إنتهاء المزاد</h2>
           
                 </div>
                 <a class="ad-btn" href="{{ url('/appear_detalis_1')}}">مشاهدة التفاصيل</a>
@@ -70,7 +70,7 @@
     <div class="col-md-4">
         <div class="card rounded">
             <div class="card-image">
-                <span class="card-notify-badge">Price Reduced</span>
+                <span class="card-notify-badge">مزاد جاري</span>
                
                 <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC091A021001.jpg&width=440&height=262" alt="Alternate Text" />
             </div>
@@ -83,7 +83,7 @@
                 <div class="ad-title m-auto">
                     <h5> هوندا اكورد Sport صالون</h5>
 					<h2>العطاء الحالي5,000,000<h2>
-          <h2> ينتهي المزاد بعد</h2>
+          <h2>  متبقي على إنتهاء المزاد</h2>
          <div class="div" id="demo">
          
          </div>
@@ -261,10 +261,10 @@
 							<div class="col-md-4 mb-md-0 mb-4">
 								<h2 class="footer-heading">تعرف علينا</h2>
 								<ul class="list-unstyled">
-		              <li><a href="#" class="d-block"> حول مزادي كار</a></li>
+		              <li><a href="{{ url('/about_us')}}" class="d-block"> حول مزادي كار</a></li>
+                  <li><a href="{{ url('/contact_us')}}" class="d-block"> تواصل معنا</a></li>
 		              <li><a href="#" class="d-block">علاقات المستثمرين </a></li>
 		              <li><a href="#" class="d-block"> أخبار الاعضاء</a></li>
-                  <li><a href="#" class="d-block">  المجتمع</a></li>
 		            </ul>
 							</div>
 						</div>

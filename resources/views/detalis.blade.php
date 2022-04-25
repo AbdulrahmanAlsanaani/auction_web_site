@@ -12,19 +12,52 @@
         <link href="assets/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-  <div class="row row-cols-4" id="detalis">
-    <div class="col-4">
-        <img  src="assets/images/out_60ed462f9cdcd1626162735.jfif">
-        <img class="img-fluid" src="assets/images/2018_honda_accord-hybrid_sedan_touring_swd_oem_2_815.webp">
-    </div>
-    
-    <div class="col-8">
-    <img class="img-fluid" src="assets/images/USD10HOC091C021001.jpg" alt="" />
-    </div>
-    
-  </div>
-</div>
-    </div>
+<div class="section">
+<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- Product main img -->
+					<div class="col-md-5 col-md-push-2">
+						<div id="product-main-img">
+							<div class="product-preview">
+								<img src="assets/images/2018_honda_accord-hybrid_sedan_touring_swd_oem_2_815.webp" alt="">
+							</div>
+
+							<div class="product-preview">
+								<img src="assets/images/2022_honda_accord_sedan_angularrear.jpg" alt="">
+							</div>
+
+							<div class="product-preview">
+								<img src="assets/images/2018_honda_accord-hybrid_sedan_touring_swd_oem_2_815.webp" alt="">
+							</div>
+
+							<div class="product-preview">
+								<img src="assets/images/USD10HOC091C021001.jpg" alt="">
+							</div>
+						</div>
+					</div>
+					<!-- /Product main img -->
+
+					<!-- Product thumb imgs -->
+					<div class="col-md-2  col-md-pull-5">
+						<div id="product-imgs">
+							<div class="product-preview">
+								<img src="assets/images/2018_honda_accord-hybrid_sedan_touring_swd_oem_2_815.webp" alt="">
+							</div>
+
+							<div class="product-preview">
+								<img src="assets/images/2022_honda_accord_sedan_angularrear.jpg" alt="">
+							</div>
+
+							<div class="product-preview">
+								<img src="assets/images/2018_honda_accord-hybrid_sedan_touring_swd_oem_2_815.webp" alt="">
+							</div>
+
+							<div class="product-preview">
+								<img src="assets/images/USD10HOC091C021001.jpg" alt="">
+							</div>
+						</div>
+					</div>
     <div class="table-responsive custom-table-responsive">
 
 <table class="table custom-table">
