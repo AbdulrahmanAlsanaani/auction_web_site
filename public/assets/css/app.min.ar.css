@@ -1,4 +1,7 @@
-@charset "UTF-8"; /*!
+@charset "UTF-8";
+@import url(../fonts/DIN.css);
+
+/*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -48,7 +51,7 @@
 }
 body {
   margin: 0;
-  font-family: DIN Next LT Arabic, sans-serif;
+    font-family: DIN-medium, sans-serif, Arial;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
