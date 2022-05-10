@@ -22,7 +22,16 @@ class UserProfileController extends Controller
         $user = User::with('profile')->get();
         return view('user.profile')
             ->with('users', $user);
-        
+    }
+
+    /**
+     * list listUser function used to display all users
+     */
+    public function listUser(){
+
+      $user=User::with('profile')->where('role','!=','0')->get();
+        return view('admin.users.view_users')
+            ->with('users', $user);
     }
 
     /**
@@ -33,8 +42,9 @@ class UserProfileController extends Controller
     public function create()
     {
         //
-        $user = User::with('profile')->find(Auth::id());
-        return view('user.profile', compact('user'));
+        $userInfo = User::find(Auth::user()->id);
+        return view('admin.add_profile')
+            ->with('userInfo', $userInfo);
     }
 
     /**
@@ -43,9 +53,24 @@ class UserProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $userProfile)
     {
-        //
+        $user = User::find($userProfile);
+        $user->name = $request->name;
+        $user->save();
+        $userInfo  = new UserProfile();
+        $userInfo->id = $userProfile;
+        $userInfo->user_id = $userProfile;
+        $userInfo->phone = $request->phone;
+        $userInfo->address = $request->address;
+        $userInfo->facebook = $request->facebook;
+        $userInfo->twitter = $request->twitter;
+        $userInfo->instagram = $request->instagram;
+        $userInfo->image = $request->hasFile('image') ? $this->uploadFile($request->file('image')) : "defaultImage.png";
+        if ($userInfo->save())
+            return redirect()->route('profile')->with(['success' => 'تم تحديث البيانات بنجاح']);
+//            return response($userInfo);
+        return redirect()->back()->with(['error' => 'عذرا هناك خطا لم تتم اضافة البيانات']);
     }
 
     /**
@@ -54,11 +79,12 @@ class UserProfileController extends Controller
      * @param  \App\Models\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function show(UserProfile $userProfile)
+    public function show()
     {
         //
-        $user = User::with('profile')->where('id',Auth::user()->id)->get();
-        return view('user.profile')
+        $user = User::with('profile')->where('id', Auth::user()->id)->get();
+        // $user = User::with('profile')->where('id',$userProfile)->get();
+        return view('admin.profile')
             ->with('users', $user);
     }
 
@@ -70,10 +96,10 @@ class UserProfileController extends Controller
      */
     public function edit($userProfile)
     {
-        $userInfo = User::find($userProfile);
-        // return view('user.edit_profile')
-        //     ->with('userInfo', $userInfo);
-        return response($userInfo);
+        $userInfo = User::with('profile')->find($userProfile);
+        return view('admin.edit_profile')
+            ->with('userInfo', $userInfo);
+        // return response($userInfo);
 
     }
 
@@ -84,17 +110,27 @@ class UserProfileController extends Controller
      * @param  \App\Models\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserProfile $userProfile)
+    public function update(Request $request, $userProfile)
     {
-        $category = Category::find($categoryId);
-        $category->name = $request->name;
-        $category->is_active = $request->is_active;
-        if ($request->hasFile('image'))
-            $category->image = $this->uploadFile($request->file('image'));
-
-        if ($category->save())
-            return redirect()->route('list_categories')->with(['success' => 'تم تحديث البيانات بنجاح']);
-
+        $user = User::find($userProfile);
+        $user->name = $request->name;
+        $user->save();
+        $userInfo = UserProfile::find($userProfile);
+        $userInfo->user_id = $userProfile;
+        $userInfo->phone = $request->phone;
+        $userInfo->address = $request->address;
+        $userInfo->facebook = $request->facebook;
+        $userInfo->twitter = $request->twitter;
+        $userInfo->instagram = $request->instagram;
+        //return dump( realpath( $userInfo->image));
+        if ($request->image!=null){
+            if (realpath( $userInfo->image))
+            unlink( realpath( $userInfo->image) );
+        }
+        $userInfo->image = $request->hasFile('image') ? $this->uploadFile($request->file('image')) : "defaultImage.png";
+        if ($userInfo->save())
+            // return redirect()->route('list_categories')->with(['success' => 'تم تحديث البيانات بنجاح']);
+            return response($userInfo);
         return redirect()->back()->with(['error' => 'عذرا هناك خطا لم تتم اضافة البيانات']);
     }
 
@@ -106,6 +142,40 @@ class UserProfileController extends Controller
      */
     public function destroy(UserProfile $userProfile)
     {
-        //
+        //{
+    }
+    public function toggle($userId){
+        $users = User::with("profile")->find($userId);//find($PoliceId);
+        $users->is_active *= -1;
+        if ($users->save())
+            return back()->with(['success' => 'تم تحديث البيانات بنجاح']);
+
+        return back()->with(['error' => 'عذرا هناك خطا لم تتم اضافة البيانات']);
+    }
+
+    public function editUser($userId){
+        $user=User::find($userId);
+        return view("admin.users.edit")->with("users",$user);
+    }
+
+    public function updateUser(Request $request , $userId){
+        $users = User::find($userId);
+
+        $users->role = $request->role;
+
+        $users->is_active = $request->is_active;
+
+        if ($users->save())
+            return redirect()->route('list-user')->with(['success' => 'تم تحديث البيانات بنجاح']);
+
+        return redirect()->back()->with(['error' => 'عذرا هناك خطا لم تتم اضافة البيانات']);
+    }
+
+    public function uploadFile($file)
+    {
+        $destination = public_path() . "/images/users/";
+        $fileName = time() . "_" . $file->getClientOriginalName();
+        $file->move($destination, $fileName);
+        return $fileName;
     }
 }
