@@ -49,7 +49,7 @@ Route::get('/login',function(){
     Route::get('/AboutUs',[AboutUs::class,'AboutUs'])->name('AboutUs');
     Route::get('/CommonQuestion',[CommonQuestion::class,'CommonQuestion'])->name('CommonQuestion');
     Route::get('/Cart',[Cart::class,'Cart'])->name('Cart');
-
+    Route::get('editphotoauction',[editphotoauction::class,"editphotoauction"])->name("editphotoauction");
 
 
 
@@ -104,4 +104,5 @@ Route::post('update_user/{PoliceId}',[UserProfileController::class,'updateUser']
 
 Route::get('/',[AuctionController::class,"viewAuction"])->name("view_auction");
 Route::get('detail_car/{carId}',[AuctionController::class,"detailAuction"])->name("action_detail");
+
 
