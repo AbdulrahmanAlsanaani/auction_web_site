@@ -20,15 +20,21 @@
 <div class="row mt-2 g-4" id="editphoto">
         <div class="col-md-3">
             <div class="card p-1" id = "con">
-            <div class="ico"> <a href="#"id="btn" onclick="fun()"><img src="assets/images/close.png"></a></div>
+            <div class="ico"> <a href="#"id="btn" ><img src="assets/images/close.png"></a></div>
                 <div class="d-flex justify-content-between align-items-center p-2" >
                     
                     <div class="flex-column lh-1 imagename"> <span></span> <span></span> </div>
                   
-                    <div> <img src="assets/images/5gpdlym8v46chhrjgdex8m9jm.jpg"  height="100" width="100" /> </div>
+                    <div> <img src="assets/images/5gpdlym8v46chhrjgdex8m9jm.jpg" id="con" height="100" width="100" />
+                 
+                 </div>
+                 <input id='inp' type="hidden" value=''>
+            
                 </div>
             </div>
         </div>
+       
+
         <div class="col-md-3">
             <div class="card p-2">
             <div class="ico"> <a href="#"><img src="assets/images/close.png"></a></div>
@@ -60,4 +66,8 @@
         
         </div>
     </div>
+    
+    <div>
+    <h1 id='aaa'>assets/images/5gpdlym8v46chhrjgdex8m9jm.jpg</h1>
+</div>
     <script src="assets/js/ss.js"></script>
