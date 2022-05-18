@@ -79,7 +79,7 @@
                             </span></span></div>
                             <div class="w-100"></div>
                             <div class="col mt-2">السعر المبدئي</div>
-                            <div class="col mt-2">100$</div>
+                            <div class="col mt-2 text-sm font-weight-bold">100$</div>
                         </div>
 
                     </div>
