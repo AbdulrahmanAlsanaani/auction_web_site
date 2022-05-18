@@ -67,14 +67,20 @@
                 {{-- end section car information --}}
                 {{-- start section car auction --}}
                 <section>
+
                     <div class="auction-info-one my-3">
-                        <div>السعر الحالي للمزاد :</div>
-                        <span class="auction-price">
+                        <div class="row">
+                            <div class="col">السعر الحالي للمزاد</div>
+                            <div class="col"><span class="auction-price">
                             @isset($auctions->curren_price)
-                            {{ $auctions->curren_price}}$
-                            @endisset
+                                        {{ $auctions->curren_price}}$
+                                    @endisset
                             <span></span> <span>
-                            </span></span>
+                            </span></span></div>
+                            <div class="w-100"></div>
+                            <div class="col mt-2">السعر المبدئي</div>
+                            <div class="col mt-2">100$</div>
+                        </div>
 
                     </div>
                     <div class="auction-info-two mb-3">
